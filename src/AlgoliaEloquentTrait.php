@@ -43,7 +43,6 @@ trait AlgoliaEloquentTrait
 
                 $index->addObjects($records);
             }
-
         });
 
         if ($safe) {
@@ -151,8 +150,7 @@ trait AlgoliaEloquentTrait
 
         if ($setToTmpIndices === false) {
             $indices = $modelHelper->getIndices($this);
-        }
-        else {
+        } else {
             $indices = $modelHelper->getIndicesTmp($this);
         }
 
@@ -163,7 +161,6 @@ trait AlgoliaEloquentTrait
 
         /** @var \AlgoliaSearch\Index $index */
         foreach ($indices as $index) {
-
             if ($b && isset($settings['slaves'])) {
                 $settings['slaves'] = array_map(function ($indexName) use ($modelHelper) {
                     return $modelHelper->getFinalIndexName($this, $indexName);
@@ -190,8 +187,9 @@ trait AlgoliaEloquentTrait
 
                 $s = array_merge($settings, $slaves_settings[$slave]);
 
-                if (count(array_keys($s)) > 0)
+                if (count(array_keys($s)) > 0) {
                     $index->setSettings($s);
+                }
             }
         }
     }
@@ -199,6 +197,7 @@ trait AlgoliaEloquentTrait
     /**
      * @param $method
      * @param $parameters
+     *
      * @return mixed
      */
     public static function __callStatic($method, $parameters)
@@ -216,6 +215,7 @@ trait AlgoliaEloquentTrait
     /**
      * @param $method
      * @param $parameters
+     *
      * @return mixed
      *
      * Catch static calls call from within a class. Example : static::method();
@@ -284,11 +284,11 @@ trait AlgoliaEloquentTrait
 
     public function autoIndex()
     {
-        return (property_exists($this, 'autoIndex') == false || $this::$autoIndex === true);
+        return property_exists($this, 'autoIndex') == false || $this::$autoIndex === true;
     }
 
     public function autoDelete()
     {
-        return (property_exists($this, 'autoDelete') == false || $this::$autoDelete === true);
+        return property_exists($this, 'autoDelete') == false || $this::$autoDelete === true;
     }
 }

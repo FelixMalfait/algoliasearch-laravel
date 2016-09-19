@@ -1,6 +1,7 @@
 <?php
 
 namespace AlgoliaSearch\Tests\Models;
+
 use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,9 +16,9 @@ class Model10 extends Model
                 'synonyms' => [
                     'red',
                     'really red',
-                    'much red'
-                ]
-            ]
-        ]
+                    'much red',
+                ],
+            ],
+        ],
     ];
 }

@@ -2,11 +2,11 @@
 
 namespace AlgoliaSearch\Tests;
 
+use AlgoliaSearch\Tests\Models\Model10;
 use AlgoliaSearch\Tests\Models\Model11;
 use AlgoliaSearch\Tests\Models\Model2;
 use AlgoliaSearch\Tests\Models\Model4;
 use AlgoliaSearch\Tests\Models\Model6;
-use AlgoliaSearch\Tests\Models\Model10;
 use Illuminate\Support\Facades\App;
 use Mockery;
 use Orchestra\Testbench\TestCase;
@@ -17,7 +17,7 @@ class AlgoliaEloquentTraitTest extends TestCase
     {
         parent::setUp();
 
-        $this->app->config->set('algolia', ['default' => 'main','connections' => ['main' => ['id' => 'your-application-id','key' => 'your-api-key'],'alternative' => ['id' => 'your-application-id','key' => 'your-api-key']]]);
+        $this->app->config->set('algolia', ['default' => 'main', 'connections' => ['main' => ['id' => 'your-application-id', 'key' => 'your-api-key'], 'alternative' => ['id' => 'your-application-id', 'key' => 'your-api-key']]]);
     }
 
     public function testGetAlgoliaRecordDefault()
@@ -99,9 +99,9 @@ class AlgoliaEloquentTraitTest extends TestCase
                     'synonyms' => [
                         'red',
                         'really red',
-                        'much red'
-                    ]
-                ]
+                        'much red',
+                    ],
+                ],
             ],
             true,
             true
@@ -120,7 +120,8 @@ class AlgoliaEloquentTraitTest extends TestCase
         $this->assertEquals(null, $model10->setSettings());
     }
 
-    function testPustToIndexWithgetAlgoliaRecordAndIndexName() {
+    public function testPustToIndexWithgetAlgoliaRecordAndIndexName()
+    {
         /** @var \AlgoliaSearch\Laravel\ModelHelper $realModelHelper */
         $realModelHelper = App::make('\AlgoliaSearch\Laravel\ModelHelper');
 
@@ -138,7 +139,7 @@ class AlgoliaEloquentTraitTest extends TestCase
         App::instance('\AlgoliaSearch\Laravel\ModelHelper', $modelHelper);
 
 
-        $index->shouldReceive('addObject')->times(1)->with(["is" => "working", "objectID" => null]);
+        $index->shouldReceive('addObject')->times(1)->with(['is' => 'working', 'objectID' => null]);
 
         $this->assertEquals(null, (new Model11())->pushToIndex());
     }

@@ -12,8 +12,9 @@ class Model11 extends Model
     public function getAlgoliaRecord($indexName)
     {
         if ($indexName == 'model11s') {
-            return ["is" => "working"];
+            return ['is' => 'working'];
         }
-        return ["is not" => "working"];
+
+        return ['is not' => 'working'];
     }
 }

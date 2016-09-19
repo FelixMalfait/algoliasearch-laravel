@@ -34,7 +34,7 @@ class ModelHelper
             $newTraits = class_uses(array_pop($traitsToSearch), $autoload);
             $traits = array_merge($newTraits, $traits);
             $traitsToSearch = array_merge($newTraits, $traitsToSearch);
-        };
+        }
 
         foreach ($traits as $trait => $same) {
             $traits = array_merge(class_uses($trait, $autoload), $traits);
@@ -42,17 +42,17 @@ class ModelHelper
 
         $traits = array_unique($traits);
 
-        return (isset($traits['AlgoliaSearch\Laravel\AlgoliaEloquentTrait']));
+        return isset($traits['AlgoliaSearch\Laravel\AlgoliaEloquentTrait']);
     }
 
     public function isAutoIndex(Model $model)
     {
-        return ($this->hasAlgoliaTrait($model) && $model->autoIndex());
+        return $this->hasAlgoliaTrait($model) && $model->autoIndex();
     }
 
     public function isAutoDelete(Model $model)
     {
-        return ($this->hasAlgoliaTrait($model) && $model->autoDelete());
+        return $this->hasAlgoliaTrait($model) && $model->autoDelete();
     }
 
     public function getKey(Model $model)
