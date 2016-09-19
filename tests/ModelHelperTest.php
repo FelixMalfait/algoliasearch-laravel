@@ -21,10 +21,11 @@ class ModelHelperTest extends TestCase
     {
         parent::setUp();
 
-        $this->app->config->set('algolia', ['default' => 'main','connections' => ['main' => ['id' => 'your-application-id','key' => 'your-api-key'],'alternative' => ['id' => 'your-application-id','key' => 'your-api-key']]]);
+        $this->app->config->set('algolia', ['default' => 'main', 'connections' => ['main' => ['id' => 'your-application-id', 'key' => 'your-api-key'], 'alternative' => ['id' => 'your-application-id', 'key' => 'your-api-key']]]);
 
         $this->modelHelper = $this->app->make('\AlgoliaSearch\Laravel\ModelHelper');
     }
+
     public function testAutoIndexAndAutoDelete()
     {
         $this->assertEquals(true, $this->modelHelper->isAutoIndex(new Model1()));

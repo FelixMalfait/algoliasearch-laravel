@@ -6,5 +6,5 @@ use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
 trait Trait1
 {
-	use AlgoliaEloquentTrait;
+    use AlgoliaEloquentTrait;
 }

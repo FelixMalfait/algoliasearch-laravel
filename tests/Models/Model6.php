@@ -20,8 +20,8 @@ class Model6 extends Model
     public $slavesSettings = [
         'model_6_desc' => [
             'ranking' => [
-                'desc(name)'
-            ]
-        ]
+                'desc(name)',
+            ],
+        ],
     ];
 }
